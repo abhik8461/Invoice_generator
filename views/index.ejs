@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Invoice generator</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+
+  <body>
+    <!-- partial:index.partial.html -->
+    <section>
+      <span></span>
+      <!-- Add spans as needed -->
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+
+      <!-- Your existing spans here -->
+
+      <div class="signin">
+        <div class="content">
+          <h2>Invoice Generator</h2>
+          <form class="form" action="/post_data" method="post">
+            <div class="inputBox">
+              <input type="text" name="name" required /> <i>Customer Name</i>
+            </div>
+            <div class="inputBox">
+              <input type="text" name="product_name" required />
+              <i>Product Name</i>
+            </div>
+            <div class="inputBox">
+              <input
+                type="number"
+                required
+                id="price"
+                name="price"
+                oninput="calculateSubtotal()"
+              />
+              <i>Price</i>
+            </div>
+            <div class="inputBox">
+              <input
+                type="number"
+                required
+                name="quantity"
+                id="quantity"
+                oninput="calculateSubtotal()"
+              />
+              <i>Quantity</i>
+            </div>
+            <div class="inputBox">
+              <input type="number" id="subtotal" readonly />
+            </div>
+            <div class="inputBox">
+              <input type="submit" value="Generate" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function calculateSubtotal() {
+        var price = parseFloat(document.getElementById("price").value) || 0;
+        var quantity = parseInt(document.getElementById("quantity").value) || 0;
+        var subtotal = price * quantity;
+        document.getElementById("subtotal").value = subtotal.toFixed(2);
+      }
+    </script>
+  </body>
+</html>
